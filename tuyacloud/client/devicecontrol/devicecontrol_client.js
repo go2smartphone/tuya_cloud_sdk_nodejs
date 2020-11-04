@@ -40,8 +40,8 @@ class DeviceControlClient {
      * @param deviceId
      * @param callback
      */
-    static issueDeviceCommand(deviceId, callback) {
-        RequestHandler.sendRequestWithToken(new Models.PostDeviceCommandReq(deviceId), callback)
+    static async issueDeviceCommand(deviceId, command,callback) {
+       await RequestHandler.sendRequestWithToken(new Models.PostDeviceCommandReq(deviceId,command), callback)
     }
 
 

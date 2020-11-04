@@ -43,13 +43,19 @@ class RequestHandler {
                             reject(err);
                         }
                         callback(err, null);
-                        return;
+                        reject(err);
+                        //return;
                     }
 
                     callback(null, data);
-                    resolve('OK');
+                    resolve(data);
                 });
             })
+        }, null, {
+            retriesMax: 1,
+            onAttemptFail: (data) => {
+                console.log("failed retry");
+            }
         });
     }
 
